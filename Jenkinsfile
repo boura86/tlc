@@ -17,7 +17,9 @@ pipeline  {
         }
         stage ('SonarQube Scanner') {
                             steps {
-                            def sonnarScanner = tool "SonarQube Scanner"
+                                script {
+                                    def sonnarScanner = tool "SonarQube Scanner"
+                                }
                                 withSonarQubeEnv('SonarQube Scanner') {
                                     bat '${sonnarScanner}/bin/sonar-scanner'
                                 }

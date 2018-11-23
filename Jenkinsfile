@@ -19,9 +19,9 @@ pipeline  {
                             steps {
                                 script {
                                     def sonnarScanner = tool "SonarQube Scanner"
-                                }
-                                withSonarQubeEnv('SonarQube Scanner') {
-                                    bat '${sonnarScanner}/bin/sonar-scanner'
+                                     withSonarQubeEnv('SonarQube Scanner') {
+                                     bat '${sonnarScanner}/bin/sonar-scanner'
+                                    }
                                 }
                             }
         }

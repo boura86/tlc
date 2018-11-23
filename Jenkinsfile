@@ -15,6 +15,14 @@ pipeline  {
                         }
                     }
         }
+        stage ('SonarQube Scanner') {
+                            steps {
+                            def sonnarScanner = tool "SonarQube Scanner"
+                                withSonarQubeEnv('SonarQube Scanner') {
+                                    bat '${sonnarScanner}/bin/sonar-scanner'
+                                }
+                            }
+        }
         stage ('Deploy Stage') {
                     steps {
                         withMaven(maven : 'maven_3_6_0') {
